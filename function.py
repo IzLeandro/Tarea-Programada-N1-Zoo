@@ -43,4 +43,5 @@ def cargarListaOriginal(listaOriginal):
                 return listaOriginal
             except:
                 grabar("listaOriginal",listaOriginal)
+listaOriginal=cargarListaOriginal(listaOriginal)
 print(listaOriginal)
