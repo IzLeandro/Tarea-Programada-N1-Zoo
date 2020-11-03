@@ -8,6 +8,7 @@ import pickle
 listaOriginal=['Loro Cabeza Amarilla', 'Águila Real', 'Jirafa Reticulada', 'Escorpión', 'Oso Polar']
 bandera=0
 #Funciones 
+#! PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
 def grabar(nomArchGrabar,lista):
     """
     Funcion:Grabar la lista en el archivo deseado
@@ -31,6 +32,7 @@ def leer(nomArchLeer):
     lista = pickle.load(f)
     f.close()
     return lista
+    #!asdasdasd
 def cargarListaOriginal(listaOriginal):
     """
     Funcion:Carga los donantes
