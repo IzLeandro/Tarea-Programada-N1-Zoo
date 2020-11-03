@@ -18,5 +18,3 @@ def cleanText(text):
             continue
         save=save+text[i]
     return save
-  
-getInfo("Oso Panda")
