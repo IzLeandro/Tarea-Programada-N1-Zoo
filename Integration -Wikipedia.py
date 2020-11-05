@@ -2,7 +2,7 @@ import wikipedia
 wikipedia.set_lang("ES")
 def getInfo(animal):
     x=wikipedia.page(animal)
-    info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),"La imagen puede ser encontrada aquí: " + x.images[0]]
+    info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),"La imagen puede ser encontrada aquí: " + x.images[0],""]
     print(info)
     return ""
 
