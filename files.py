@@ -60,7 +60,6 @@ def readTxtFirstTime(times):
             times-=1
     reference.close()
     return deleteResidueFromFile(finalList)
-
 def deleteResidueFromFile(listAnimals):
     finalList=[]
     for i in listAnimals:
