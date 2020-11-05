@@ -1,5 +1,5 @@
 #Importaciones
-from files import cargarListaOriginal, readTxtFirstTime, grabar
+from files import cargarListaOriginal, leerTxtPrimeraVez, grabar
 import re
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
@@ -16,7 +16,7 @@ def cargaLista():
             print("Dijite unicamente numeros.")
             cargaLista()
         cantAnimales=eval(cantAnimales)
-        animales = readTxtFirstTime(cantAnimales)
+        animales = leerTxtPrimeraVez(cantAnimales)
     else:
         siNo=input("Se ha encontrado un archivo binario que contiene animales, desea cargarlo? SI/NO: ")
         if siNo.upper() == "SI":
