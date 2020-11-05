@@ -5,7 +5,6 @@ def getInfo(animal):
     info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),"La imagen puede ser encontrada aquí: " + x.images[0],""]
     print(info)
     return ""
-
 def cleanText(text):
     save=""
     flag=0
@@ -14,7 +13,8 @@ def cleanText(text):
             flag-=1
             continue
         if text[i]=="[": 
-            flag=2
+            flag=3
             continue
         save=save+text[i]
+    save=save.replace("\u200b","")
     return save
