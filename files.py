@@ -7,7 +7,7 @@ import pickle
 import random
 import os
 #Funciones 
-#! PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
+#* Done: PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
 def grabar(nomArchGrabar,lista):
     """
     Funcion:Grabar la lista en el archivo deseado
@@ -46,7 +46,7 @@ def cargarListaOriginal(archivo):
             except:
                 grabar(archivo,var)
 
-#! Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: readTxtFirstTime(10)
+#* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: readTxtFirstTime(10)
 #Lee todo el archivo
 def readTxtFirstTime(times):
     finalList=[]
