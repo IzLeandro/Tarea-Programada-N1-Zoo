@@ -1,5 +1,5 @@
 #Importaciones
-from files import cargarListaOriginal, readTxtFirstTime, grabar
+from files import cargarListaOriginal, leerTxtPrimeraVez, grabar
 import re
 import random
 #TODO:
@@ -18,7 +18,7 @@ def cargaLista():
             cargaLista()
             return''
         cantAnimales=eval(cantAnimales)
-        animales = readTxtFirstTime(cantAnimales)
+        animales = leerTxtPrimeraVez(cantAnimales)
     else:
         siNo=input("Se ha encontrado un archivo binario que contiene animales, desea cargarlo? SI/NO: ")
         if siNo.upper() == "SI":
