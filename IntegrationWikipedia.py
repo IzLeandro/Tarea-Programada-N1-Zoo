@@ -2,7 +2,7 @@ import wikipedia
 wikipedia.set_lang("ES")
 def getInfo(animal):
     x=wikipedia.page(animal)
-    info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),x.images[0],""]
+    info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),x.images[0],[]]
     return info
 def cleanText(text):
     save=""
@@ -17,3 +17,4 @@ def cleanText(text):
         save=save+text[i]
     save=save.replace("\u200b","")
     return save
+
