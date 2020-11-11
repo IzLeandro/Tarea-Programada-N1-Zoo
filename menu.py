@@ -4,9 +4,9 @@ import re
 import random
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
-#? C:\Users\ljafe\Desktop\prueba
+#? Ejemplo al abrir: C:\Users\ljafe\Desktop\prueba
 #Variables Globales
-archivo = input("Inserte el directorio donde se encuentra el archivo o si se encuentra en la misma carpeta, el nombre: ")
+archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
 animales = cargarListaOriginal(archivo)
 #Funciones
 def cargaLista():
@@ -30,7 +30,7 @@ def cargaLista():
             print("Solo DEBE ingresar Si o No.")
             cargaLista()
     return animales
-animales2=cargaLista()
+cargaLista()
 def numApartarAnimales():
     numAnimales = input("Digite la cantidad de animales que es posible atender: ")
     while not re.match("^\d{1,}$",numAnimales):
@@ -41,13 +41,14 @@ def numApartarAnimales():
 
 def apartarAnimales():
     num=numApartarAnimales()
-    global animales2
+    global animales
     listaNueva=[]
     for i in range(num):
-        listaNueva.append(random.choice(animales2))
+        listaNueva.append(random.choice(animales))
     return listaNueva
 #Corrida
 #an=cargaLista()
 #print(an)
 #grabar(archivo, animales)
+print(apartarAnimales())
 
