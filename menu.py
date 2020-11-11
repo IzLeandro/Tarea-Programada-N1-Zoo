@@ -1,5 +1,6 @@
 #Importaciones
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar
+from IntegrationWikipedia import getInfo
 import re
 import random
 #TODO:
@@ -30,7 +31,6 @@ def cargaLista():
             print("Solo DEBE ingresar Si o No.")
             cargaLista()
     return animales
-cargaLista()
 def numApartarAnimales():
     numAnimales = input("Digite la cantidad de animales que es posible atender: ")
     while not re.match("^\d{1,}$",numAnimales):
@@ -43,12 +43,26 @@ def apartarAnimales():
     num=numApartarAnimales()
     global animales
     listaNueva=[]
-    for i in range(num):
+    while num!=0:
+        num-=1
         listaNueva.append(random.choice(animales))
-    return listaNueva
-#Corrida
-#an=cargaLista()
-#print(an)
-#grabar(archivo, animales)
-print(apartarAnimales())
+    animales=listaNueva
+    return animales
+def obtenerInformacion(animal):
+    animal=getInfo(animal)
+    print("A: ",animal[1])
+    print("B: ",animal[2])
+    print("C: ",animal[3])
+    print("D: ",animal[4])
+    return ""
+#menu
+
+
+
+#!EJECUCIÓN
+#cargaLista()
+#print(animales)
+#menu()
+#grabar(archivo,animales)
+print(obtenerInformacion("sapo"))
 
