@@ -21,7 +21,7 @@ def cargaLista():
     if animales == []:
         cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
         if not re.match("^\d{1,}$",cantAnimales):
-            print("Dijite únicamente numeros.")
+            print("Dijite únicamente números.")
             cargaLista()
             return''
         cantAnimales=eval(cantAnimales)
@@ -32,7 +32,7 @@ def cargaLista():
             cargaLista()
             return ""
     else:
-        siNo=input("Se ha encontrado un archivo binario que contiene animales, desea cargarlo? SI/NO: ")
+        siNo=input("Se ha encontrado un archivo binario que contiene animales, ¿desea cargarlo? SI/NO: ")
         if siNo.upper() == "SI":
             return ""
         if siNo.upper() == "NO":
@@ -63,10 +63,14 @@ def obtenerInformacion():
     if type(eleccion)!=int or eleccion<1 or eleccion>len(animales):
         print("Ingrese un valor correcto.")
         return ""
+    print()
     print("A.Título: ",animalesWiki[eleccion-1][1])
-    print("B. : ",animalesWiki[eleccion-1][2])
-    print("C: ",animalesWiki[eleccion-1][3])
-    print("D: ",animalesWiki[eleccion-1][4])
+    print()
+    print("B.URL de Wikipedia : ",animalesWiki[eleccion-1][2])
+    print()
+    print("C.Resumen del contenido: ",animalesWiki[eleccion-1][3])
+    print()
+    print("D.Imagen: ",animalesWiki[eleccion-1][4])
     return ""
 #menu
 def menu():
@@ -112,32 +116,67 @@ def menu():
         print("7. Salir del sistema de información\n")
         opcion = int(input("Digite una opción: "))
         if opcion == 1:
-            print(1)
-        elif opcion == 2:
+            print()
+            print('----Agregar animales----')
+            print()
+            #agregarAnimales()
+            print()
+            input('Digite enter para continuar...')
+        elif opcion == 2: 
+            print()
+            print('----Obtener información de un animal----')
+            print()
             obtenerInformacion()
+            print()
+            input('Digite enter para continuar...')
         elif opcion == 3:
+            print()
+            print('----Registrar anotaciones----')
+            print()
             #registrarAnotaciones()
-            print("")
+            print()
+            input('Digite enter para continuar...')
         elif opcion == 4:
+            print()
+            print('----Apartar animales de mi zoológico----')
+            print()
             numApartarAnimales()
+            print()
+            input('Digite enter para continuar...')
         elif opcion == 5:
+            print()
+            print('----Salvaguardando estable mi zoológico----')
+            print()
             #salvaguardandoZoologico() 
-            print("")  
+            print()  
+            input('Digite enter para continuar...')
         elif opcion == 6:
+            print()
+            print('----Exportando la base de datos----')
+            print()
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
             print(animalesWiki)
             grabarXml(nombreBase,animalesWiki)
+            input('Digite enter para continuar...')
         elif opcion == 7:
+            print()
+            print('Saliendo del sistema de información...')
+            print()
             frases=["Una vez que una especie se extingue ninguna ley puede hacerla regresar: se ha marchado para siempre",
                     'Las mentes más profundas de todos los tiempos han sentido compasión por los animales',
                     'Si un hombre aspira a una vida correcta, su primer acto de abstinencia es el de lastimar animales',
                     'Podemos juzgar el corazón de una persona por la forma en que trata a los animales',
-                    'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble' ]
+                    'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble']
+            time.sleep(2)
             print(random.choice(frases))
             grabar(archivo,animales)
+            time.sleep(2)
             break
         else:
+            print()
             print('Opción no válida')
+            print()
+            input('Digite enter para continuar...')
 
 #menu
 #!EJECUCIÓN
