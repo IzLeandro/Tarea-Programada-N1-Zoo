@@ -62,7 +62,14 @@ def numApartarAnimales():
         print("Dijite únicamente números.")
         numAnimales = input("Digite la cantidad de animales que es posible atender: ")   
     numAnimales=eval(numAnimales)
-    print("Se han apartado: ",len(animales)-numAnimales,"del zoológico.")
+    while numAnimales>len(animales):
+        print('Cantidad de animales mayor a la existente en el zoológico')
+        numAnimales = input("Digite la cantidad de animales que es posible atender: ")
+        while not re.match("^\d{1,}$",numAnimales):
+            print("Dijite únicamente números.")
+            numAnimales = input("Digite la cantidad de animales que es posible atender: ")  
+        numAnimales=eval(numAnimales)    
+    print("Se han apartado",len(animales)-numAnimales,"del zoológico.")
     animales=apartarAnimales(numAnimales,animales)
     animalesWiki=cargarInfoWiki(animales)
     return ""
