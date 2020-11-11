@@ -1,10 +1,11 @@
 #Importaciones
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar, grabarXml
 from IntegrationWikipedia import getInfo
-from function import cargarInfoWiki, apartarAnimales
+from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico
 import re
 import random
 import time
+import os
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
@@ -70,7 +71,7 @@ def obtenerInformacion():
     return ""
 #menu
 def menu():
-    global animales
+    global animales, animalesWiki
     print("""
                       ______           _   __        _            
                      |___  /          | | /_/       (_)                  
@@ -95,7 +96,9 @@ def menu():
     """)
     time.sleep(2)
     while True:
-        print("""    
+        time.sleep(1)
+        os.system("cls")
+        print("""        
                          __  
                         /_/  
   _ __ ___   ___ _ __  _   _ 
@@ -116,16 +119,14 @@ def menu():
         elif opcion == 2:
             obtenerInformacion()
         elif opcion == 3:
-            #registrarAnotaciones()
+            animalesWiki=registrarAnotaciones(animalesWiki)
             print("")
         elif opcion == 4:
             numApartarAnimales()
         elif opcion == 5:
-            #salvaguardandoZoologico() 
-            print("")  
+            salvaguardandoZoologico(animalesWiki) 
         elif opcion == 6:
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
-            print(animalesWiki)
             grabarXml(nombreBase,animalesWiki)
         elif opcion == 7:
             frases=["Una vez que una especie se extingue ninguna ley puede hacerla regresar: se ha marchado para siempre",
@@ -138,6 +139,7 @@ def menu():
             break
         else:
             print('Opción no válida')
+        
 
 #menu
 #!EJECUCIÓN
