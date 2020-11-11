@@ -1,6 +1,6 @@
 from IntegrationWikipedia import getInfo
 import random
-
+import time
 def cargarInfoWiki(animales):
     lista=[]
     cont=0
@@ -10,6 +10,8 @@ def cargarInfoWiki(animales):
         lista.append(getInfo(i))
         cont+=1
     print("Información cargada correctamente.")
+    time.sleep(2)
+    print(lista)
     return lista
     
 def apartarAnimales(num,animales):

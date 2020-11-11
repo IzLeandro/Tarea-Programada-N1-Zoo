@@ -48,22 +48,26 @@ def cargarListaOriginal(archivo):
 
 #* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: leerTxtPrimeraVez(10)
 #Lee todo el archivo
+#!BUG
 def leerTxtPrimeraVez(veces):
     listaFinal=[]
     nombreArchivo= input("Inserte el nombre del archivo con los animales: ")
-    referencia = open((nombreArchivo),"r",encoding="utf8")
-    leerLista = referencia.readlines()
-    if veces>len(leerLista):
-        print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
-        return
-    while veces!=0:
-        animal=leerLista[random.randrange(len(leerLista))]
-        if animal not in listaFinal:
-            listaFinal+= [animal] 
-            veces-=1
-        
-    referencia.close()
-    return borrarResiduosDelArchivo(listaFinal)
+    try:
+        referencia = open((nombreArchivo),"r",encoding="utf8")
+        leerLista = referencia.readlines()
+        if veces>len(leerLista):
+            print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
+            return
+        while veces!=0:
+            animal=leerLista[random.randrange(len(leerLista))]
+            if animal not in listaFinal:
+                listaFinal+= [animal] 
+                veces-=1
+                referencia.close()
+                return borrarResiduosDelArchivo(listaFinal)
+    except:
+        return None
+
 def borrarResiduosDelArchivo(listaAnimales):
     listaFinal=[]
     for i in listaAnimales:
