@@ -46,22 +46,54 @@ def cargarListaOriginal(archivo):
             except:
                 grabar(archivo,var)
 
-#* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: readTxtFirstTime(10)
+#* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: leerTxtPrimeraVez(10)
 #Lee todo el archivo
-def readTxtFirstTime(times):
-    finalList=[]
-    fileName= input("Inserte el nombre del archivo: ")
-    reference = open((fileName),"r",encoding="utf8")
-    readList = reference.readlines()
-    while times!=0:
-        animal=readList[random.randrange(len(readList))]
-        if animal not in finalList:
-            finalList+= [animal] 
-            times-=1
-    reference.close()
-    return deleteResidueFromFile(finalList)
-def deleteResidueFromFile(listAnimals):
-    finalList=[]
-    for i in listAnimals:
-        finalList+=[i[:-1]]
-    return finalList
+#!BUG
+def leerTxtPrimeraVez(veces):
+    listaFinal=[]
+    nombreArchivo= input("Inserte el nombre del archivo con los animales: ")
+    try:
+        referencia = open((nombreArchivo),"r",encoding="utf8")
+        leerLista = referencia.readlines()
+        if veces>len(leerLista):
+            print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
+            return
+        while veces!=0:
+            animal=leerLista[random.randrange(len(leerLista))]
+            if animal not in listaFinal:
+                listaFinal+= [animal] 
+                veces-=1
+                referencia.close()
+        return borrarResiduosDelArchivo(listaFinal)
+    except:
+        return None
+
+def borrarResiduosDelArchivo(listaAnimales):
+    listaFinal=[]
+    for i in listaAnimales:
+        listaFinal+=[i[:-1]]
+    return listaFinal
+
+def grabarXml(nomArchGrabar,lista):
+    """
+    Funcion:Guarda el archivo 
+    Entrada:El nombre del archivo y la lista con los elementos
+    Salida:nada o un mensaje de error
+    """
+    nomArchGrabar+=".xml"
+    #try:
+    f=open(nomArchGrabar,"w")
+    f.writelines("<Zoologico>\n")
+    for i in lista:
+        f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
+        f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
+        f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
+        f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
+        f.writelines("\t\t<img>"+i[4]+"</img>\n")
+        f.writelines("\t\t<Anotaciones>"+str(i[5])+"</Anotaciones>\n")
+    f.writelines("</Zoologico>\n")
+    f.close()
+    print("¡Archivo xml creado correctamente!")
+    return ""
+    #except:
+        #print("Ha ocurrido un error al crear el archivo xml.")
