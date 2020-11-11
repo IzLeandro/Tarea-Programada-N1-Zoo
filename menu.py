@@ -1,4 +1,9 @@
-#Importaciones
+#Elaborado por: Leandro Camacho Aguilar y Celina Madrigal Murillo
+#Fecha de Creación: 31/10/2020 2:32pm 
+#Fecha de última Modificación: XX/XX/XX X:XXpm
+#Versión: 3.9.0
+
+#Importaciones 
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar, grabarXml
 from IntegrationWikipedia import getInfo
 from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico
@@ -10,11 +15,12 @@ import os
 #!AL cerrar archivo o al abrir el archivo; guardar
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
 #? Ejemplo al abrir: C:\Users\ljafe\Desktop\prueba
+
 #Variables Globales
 archivo = ""
 animales = []
 animalesWiki = []
-#Funciones
+#Definición de funciones 
 def cargaLista():
     global animales,archivo
     archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
@@ -45,6 +51,11 @@ def cargaLista():
     return ""
 
 def numApartarAnimales():
+    """
+    Función: Revisa que el número digitado por el usuario esté bien y llama a la función apartarAnimales
+    Entrada:el número de animales que se pueden atender  
+    Salida:el mensaje de cuantos animales se apartaron 
+    """
     global animales,animalesWiki
     numAnimales = input("Digite la cantidad de animales que es posible atender: ")
     while not re.match("^\d{1,}$",numAnimales):
@@ -57,6 +68,11 @@ def numApartarAnimales():
     return ""
 
 def obtenerInformacion():
+    """
+    Función:Imprime la información del animal seleccionado
+    Entrada:el número del animal 
+    Salida:la información del animal o un mensaje de error
+    """
     global animales,animalesWiki
     for i in range(len(animales)):
         print(i+1,":",animales[i])
