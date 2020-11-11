@@ -1,21 +1,23 @@
 import wikipedia
+import re
+import os
 #?Listo
 wikipedia.set_lang("ES")
 def getInfo(animal):
     x=wikipedia.page(animal)
     info=[animal, x.title,x.url,cleanText(wikipedia.summary(animal)),x.images[0],[]]
     return info
-def cleanText(text):
+def cleanText(texto):
+    texto=cleanTextAux(texto)
     save=""
-    flag=0
-    for i in range(len(text)):
-        if flag!=0:
-            flag-=1
-            continue
-        if text[i]=="[": 
-            flag=3
-            continue
-        save=save+text[i]
+    for i in range(len(texto)):
+        save=save+texto[i]
     save=save.replace("\u200b","")
     return save
 
+def cleanTextAux(texto):
+    texto=str(texto)
+    texto = re.sub("[[][\d][]]", " ", texto)
+    texto = re.sub("[[][\d][\d][]]", " ", texto)
+    os.system("cls")
+    return texto

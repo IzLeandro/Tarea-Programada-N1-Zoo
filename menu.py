@@ -1,7 +1,7 @@
 #Importaciones
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar, grabarXml
 from IntegrationWikipedia import getInfo
-from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico
+from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico,sacaListaAnimales
 import re
 import random
 import time
@@ -11,37 +11,36 @@ import os
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
 #? Ejemplo al abrir: C:\Users\ljafe\Desktop\prueba
 #Variables Globales
-archivo = ""
+flagPrimeraVez=True
 animales = []
 animalesWiki = []
+nombreZoo=input("¡Bienvenido!\nDijite un nombre para su zoológico: ")
 #Funciones
 def cargaLista():
-    global animales,archivo
-    archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
-    animales = cargarListaOriginal(archivo)
-    if animales == []:
-        cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
-        if not re.match("^\d{1,}$",cantAnimales):
-            print("Dijite únicamente numeros.")
-            cargaLista()
-            return''
-        cantAnimales=eval(cantAnimales)
-        animales = leerTxtPrimeraVez(cantAnimales)
-        if animales == None:
-            print("No se ha encontrado el archivo con los animales, ingrese nuevamente los datos...")
-            time.sleep(3)
-            cargaLista()
-            return ""
+    global animales,archivo,flagPrimeraVez,animalesWiki
+    if flagPrimeraVez:
+        cantAnimales = eval(input("Digite la cantidad de animales que desea obtener del archivo: "))
+        if type(cantAnimales) != int:
+            print("Debe digitar un nùmero entero.")
+            return cargaLista()
+        animales=leerTxtPrimeraVez(cantAnimales)
+        flagPrimeraVez=False
+        return ""
+    siNo=input(" Desea cargar datos de un archivo previo?. SI/NO: ")
+    if siNo.upper() == "SI":
+        archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
+        animalesWiki = cargarListaOriginal(archivo)
+        animales=sacaListaAnimales(animalesWiki)
+        print("Se ha cargado el archivo.")
+        return ""
+    if siNo.upper() == "NO":
+        animales=[]
+        flagPrimeraVez=True
+        cargaLista()
+        return ""
     else:
-        siNo=input("Se ha encontrado un archivo binario que contiene animales, desea cargarlo? SI/NO: ")
-        if siNo.upper() == "SI":
-            return ""
-        if siNo.upper() == "NO":
-            animales=[]
-            cargaLista()
-        else:
-            print("Solo DEBE ingresar Si o No.")
-            cargaLista()
+        print("Solo DEBE ingresar Si o No.")
+        cargaLista()
     return ""
 
 def numApartarAnimales():
@@ -81,7 +80,8 @@ def menu():
                      /_____\___/ \___/|_|\___/ \__, |_|\___\___/                                                                             
                                                 __/ |             
                                                |___/                         
-      
+
+
                                         __,__
                                .--.  .-"     "-.  .--.
                               ' .. \/  .-. .-.  \/ .. '
@@ -106,6 +106,7 @@ def menu():
  | | | | | |  __/ | | | |_| |
  |_| |_| |_|\___|_| |_|\__,_|
                             """)
+        print("   🦜",nombreZoo,"🦜   ")
         print("1. Agregar animales")
         print("2. Obtener información de un animal")
         print("3. Registrar anotaciones")
@@ -115,7 +116,7 @@ def menu():
         print("7. Salir del sistema de información\n")
         opcion = int(input("Digite una opción: "))
         if opcion == 1:
-            print(1)
+            cargaLista()
         elif opcion == 2:
             obtenerInformacion()
         elif opcion == 3:
@@ -129,13 +130,16 @@ def menu():
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
             grabarXml(nombreBase,animalesWiki)
         elif opcion == 7:
+            siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
+            if siNo.upper() == "SI":
+                grabar(animalesWiki)
+                print("Se ha guardado el archivo.")
             frases=["Una vez que una especie se extingue ninguna ley puede hacerla regresar: se ha marchado para siempre",
                     'Las mentes más profundas de todos los tiempos han sentido compasión por los animales',
                     'Si un hombre aspira a una vida correcta, su primer acto de abstinencia es el de lastimar animales',
                     'Podemos juzgar el corazón de una persona por la forma en que trata a los animales',
                     'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble' ]
             print(random.choice(frases))
-            grabar(archivo,animales)
             break
         else:
             print('Opción no válida')

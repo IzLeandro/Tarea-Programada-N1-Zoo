@@ -8,12 +8,13 @@ import random
 import os
 #Funciones 
 #* Done: PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
-def grabar(nomArchGrabar,lista):
+def grabar(lista):
     """
     Funcion:Grabar la lista en el archivo deseado
     Entrada:El nombre del archivo y la lista con los elementos
     Salida:nada o un mensaje de error
     """
+    nomArchGrabar=input("Dijite el nombre del archivo a grabar: ")
     try:
         f=open(nomArchGrabar,"wb")
         pickle.dump(lista,f)
@@ -44,7 +45,7 @@ def cargarListaOriginal(archivo):
                 var = leer(archivo)
                 return var
             except:
-                grabar(archivo,var)
+                grabar(var)
 
 #* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: leerTxtPrimeraVez(10)
 #Lee todo el archivo
@@ -83,16 +84,18 @@ def grabarXml(nomArchGrabar,lista):
     #try:
     f=open(nomArchGrabar,"w")
     f.writelines("<Zoologico>\n")
-    for i in lista:
-        f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
-        f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
-        f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
-        f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
-        f.writelines("\t\t<img>"+i[4]+"</img>\n")
-        f.writelines("\t\t<Anotaciones>"+str(i[5])+"</Anotaciones>\n")
-    f.writelines("</Zoologico>\n")
-    f.close()
-    print("¡Archivo xml creado correctamente!")
-    return ""
-    #except:
-        #print("Ha ocurrido un error al crear el archivo xml.")
+    try:
+        for i in lista:
+            f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
+            f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
+            f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
+            f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
+            f.writelines("\t\t<img>"+i[4]+"</img>\n")
+            f.writelines("\t\t<Anotaciones>"+str(i[5])+"</Anotaciones>\n")
+        f.writelines("</Zoologico>\n")
+        f.close()
+        print("¡Archivo xml creado correctamente!")
+        return ""
+    except:
+        print("Ha ocurrido un error al crear el archivo xml.")
+    

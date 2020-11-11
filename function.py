@@ -54,9 +54,8 @@ def siNo():
 def salvaguardandoZoologico(matriz):
     for i in matriz:
         del i[4]
-    print(matriz)
     for i in matriz:
-        #print(i)
+        print("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░")
         print(i[1],"Usualmente conocido como",i[0],"\n")
         print(i[3],"\n")
         if i[4]==[]:
@@ -64,3 +63,10 @@ def salvaguardandoZoologico(matriz):
         print("Observaciones y anotaciònes: ",  i[4],"\n")
         print("Puedes encontrar màs informaciòn aquì:",i[2],"\n\n")
     return ""
+
+def sacaListaAnimales(listaWiki):
+    nuevaLista=[]
+    for i in listaWiki:
+        print(i)
+        nuevaLista=i[0]
+    return nuevaLista
