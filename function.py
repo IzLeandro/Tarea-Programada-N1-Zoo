@@ -7,11 +7,10 @@ def cargarInfoWiki(animales):
     print("Obteniendo información desde Wikipedia...")
     for i in animales:
         print("Animales cargados: ",cont,"de",len(animales),end="\r")
-        lista.append(getInfo(i))
+        lista+=[getInfo(i)]
         cont+=1
     print("Información cargada correctamente.")
     time.sleep(2)
-    print(lista)
     return lista
     
 def apartarAnimales(num,animales):

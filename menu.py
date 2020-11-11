@@ -72,7 +72,6 @@ def obtenerInformacion():
 def menu():
     global animales
     print("""
-
                       ______           _   __        _            
                      |___  /          | | /_/       (_)                  
                         / / ___   ___ | | ___   __ _ _  ___ ___   
@@ -93,14 +92,10 @@ def menu():
                                    \   \ `~` /   /
                                     '._ '-=-' _.'
                                        '~---~'
-     
-
-
     """)
     time.sleep(2)
     while True:
-        print("""   
-                         __  
+        print("""        __  
                         /_/  
   _ __ ___   ___ _ __  _   _ 
  | '_ ` _ \ / _ \ '_ \| | | |
@@ -113,10 +108,10 @@ def menu():
         print("4. Apartar animales de mi zoológico")
         print("5. Salvaguardando estable mi zoológico")
         print("6. Exportando la base de datos")
-        print("7. Salir del sistema de información")
-        opcion = int(input("Digite una opción:"))
+        print("7. Salir del sistema de información\n")
+        opcion = int(input("Digite una opción: "))
         if opcion == 1:
-            cargaLista()
+            print(1)
         elif opcion == 2:
             obtenerInformacion()
         elif opcion == 3:
@@ -130,7 +125,8 @@ def menu():
             print("")  
         elif opcion == 6:
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
-            grabarXml(nombreBase,animales)
+            print(animalesWiki)
+            grabarXml(nombreBase,animalesWiki)
         elif opcion == 7:
             frases=["Una vez que una especie se extingue ninguna ley puede hacerla regresar: se ha marchado para siempre",
                     'Las mentes más profundas de todos los tiempos han sentido compasión por los animales',

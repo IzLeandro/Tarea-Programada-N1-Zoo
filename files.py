@@ -64,7 +64,7 @@ def leerTxtPrimeraVez(veces):
                 listaFinal+= [animal] 
                 veces-=1
                 referencia.close()
-                return borrarResiduosDelArchivo(listaFinal)
+        return borrarResiduosDelArchivo(listaFinal)
     except:
         return None
 
@@ -81,19 +81,19 @@ def grabarXml(nomArchGrabar,lista):
     Salida:nada o un mensaje de error
     """
     nomArchGrabar+=".xml"
-    try:
-        f=open(nomArchGrabar,"w")
-        f.writelines("<Zoologico>\n")
-        for i in lista:
-            f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
-            f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
-            f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
-            f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
-            f.writelines("\t\t<img>"+i[4]+"</img>\n")
-            f.writelines("\t\t<Anotaciones>"+i[5]+"</Anotaciones>\n")
-        f.writelines("</Zoologico>\n")
-        f.close()
-        print("¡Archivo xml creado correctamente!")
-        return ""
-    except:
-        print("Ha ocurrido un error al crear el archivo xml.")
+    #try:
+    f=open(nomArchGrabar,"w")
+    f.writelines("<Zoologico>\n")
+    for i in lista:
+        f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
+        f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
+        f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
+        f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
+        f.writelines("\t\t<img>"+i[4]+"</img>\n")
+        f.writelines("\t\t<Anotaciones>"+str(i[5])+"</Anotaciones>\n")
+    f.writelines("</Zoologico>\n")
+    f.close()
+    print("¡Archivo xml creado correctamente!")
+    return ""
+    #except:
+        #print("Ha ocurrido un error al crear el archivo xml.")
