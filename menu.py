@@ -63,8 +63,8 @@ def obtenerInformacion():
     if type(eleccion)!=int or eleccion<1 or eleccion>len(animales):
         print("Ingrese un valor correcto.")
         return ""
-    print("A: ",animalesWiki[eleccion-1][1])
-    print("B: ",animalesWiki[eleccion-1][2])
+    print("A.Título: ",animalesWiki[eleccion-1][1])
+    print("B. : ",animalesWiki[eleccion-1][2])
     print("C: ",animalesWiki[eleccion-1][3])
     print("D: ",animalesWiki[eleccion-1][4])
     return ""
@@ -95,7 +95,8 @@ def menu():
     """)
     time.sleep(2)
     while True:
-        print("""        __  
+        print("""    
+                         __  
                         /_/  
   _ __ ___   ___ _ __  _   _ 
  | '_ ` _ \ / _ \ '_ \| | | |
