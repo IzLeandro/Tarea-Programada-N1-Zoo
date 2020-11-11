@@ -6,7 +6,7 @@
 import pickle
 import random
 import os
-#Funciones 
+#Definición de funciones 
 #* Done: PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
 def grabar(nomArchGrabar,lista):
     """
@@ -34,8 +34,8 @@ def leer(nomArchLeer):
     #!Funcion que necesitamos
 def cargarListaOriginal(archivo):
     """
-    Funcion:Carga los donantes
-    Entradas:la lista de donantes
+    Funcion:Carga o lee el archivo
+    Entradas:nombre del archivo
     Salidas:NA
     """
     var=[]
@@ -49,6 +49,11 @@ def cargarListaOriginal(archivo):
 #* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: leerTxtPrimeraVez(10)
 #Lee todo el archivo
 def leerTxtPrimeraVez(veces):
+    """
+    Funcion:Carga o lee el archivo
+    Entradas:nombre del archivo
+    Salidas:NA
+    """
     listaFinal=[]
     nombreArchivo= input("Inserte el nombre del archivo con los animales: ")
     try:

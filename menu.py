@@ -10,7 +10,6 @@ from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salva
 import re
 import random
 import time
-import os
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
@@ -68,8 +67,11 @@ def numApartarAnimales():
         while not re.match("^\d{1,}$",numAnimales):
             print("Dijite únicamente números.")
             numAnimales = input("Digite la cantidad de animales que es posible atender: ")  
-        numAnimales=eval(numAnimales)    
-    print("Se han apartado",len(animales)-numAnimales,"del zoológico.")
+        numAnimales=eval(numAnimales) 
+    if len(animales)-numAnimales==1:
+        print("Se ha apartado",len(animales)-numAnimales,"animal del zoológico.")
+    else:
+        print("Se han apartado",len(animales)-numAnimales,"animales del zoológico.")
     animales=apartarAnimales(numAnimales,animales)
     animalesWiki=cargarInfoWiki(animales)
     return ""
@@ -124,7 +126,6 @@ def menu():
     time.sleep(2)
     while True:
         time.sleep(1)
-        os.system("cls")
         print("""        
                          __  
                         /_/  
