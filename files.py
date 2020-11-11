@@ -48,7 +48,6 @@ def cargarListaOriginal(archivo):
 
 #* Done; Al llamar utilizar la siguiente con entrada de cantidad, solicitar en el menu: leerTxtPrimeraVez(10)
 #Lee todo el archivo
-#!BUG
 def leerTxtPrimeraVez(veces):
     listaFinal=[]
     nombreArchivo= input("Inserte el nombre del archivo con los animales: ")

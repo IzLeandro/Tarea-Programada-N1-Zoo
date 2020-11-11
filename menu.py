@@ -118,8 +118,7 @@ def menu():
             #registrarAnotaciones()
             print("")
         elif opcion == 4:
-            #numApartarAnimales
-            print("")
+            numApartarAnimales()
         elif opcion == 5:
             #salvaguardandoZoologico() 
             print("")  

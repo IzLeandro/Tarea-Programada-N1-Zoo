@@ -1,4 +1,5 @@
 import wikipedia
+#?Listo
 wikipedia.set_lang("ES")
 def getInfo(animal):
     x=wikipedia.page(animal)
