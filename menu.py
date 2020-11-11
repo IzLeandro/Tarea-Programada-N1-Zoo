@@ -1,15 +1,20 @@
-#Importaciones
+#Elaborado por: Leandro Camacho Aguilar y Celina Madrigal Murillo
+#Fecha de Creación: 31/10/2020 2:32pm 
+#Fecha de última Modificación: XX/XX/XX X:XXpm
+#Versión: 3.9.0
+
+#Importaciones 
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar, grabarXml
 from IntegrationWikipedia import getInfo
 from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico,sacaListaAnimales
 import re
 import random
 import time
-import os
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
 #? Ejemplo al abrir: C:\Users\ljafe\Desktop\prueba
+
 #Variables Globales
 flagPrimeraVez=True
 animales = []
@@ -44,18 +49,38 @@ def cargaLista():
     return ""
 
 def numApartarAnimales():
+    """
+    Función: Revisa que el número digitado por el usuario esté bien y llama a la función apartarAnimales
+    Entrada:el número de animales que se pueden atender  
+    Salida:el mensaje de cuantos animales se apartaron 
+    """
     global animales,animalesWiki
     numAnimales = input("Digite la cantidad de animales que es posible atender: ")
     while not re.match("^\d{1,}$",numAnimales):
         print("Dijite únicamente números.")
         numAnimales = input("Digite la cantidad de animales que es posible atender: ")   
     numAnimales=eval(numAnimales)
-    print("Se han apartado: ",len(animales)-numAnimales,"del zoológico.")
+    while numAnimales>len(animales):
+        print('Cantidad de animales mayor a la existente en el zoológico')
+        numAnimales = input("Digite la cantidad de animales que es posible atender: ")
+        while not re.match("^\d{1,}$",numAnimales):
+            print("Dijite únicamente números.")
+            numAnimales = input("Digite la cantidad de animales que es posible atender: ")  
+        numAnimales=eval(numAnimales) 
+    if len(animales)-numAnimales==1:
+        print("Se ha apartado",len(animales)-numAnimales,"animal del zoológico.")
+    else:
+        print("Se han apartado",len(animales)-numAnimales,"animales del zoológico.")
     animales=apartarAnimales(numAnimales,animales)
     animalesWiki=cargarInfoWiki(animales)
     return ""
 
 def obtenerInformacion():
+    """
+    Función:Imprime la información del animal seleccionado
+    Entrada:el número del animal 
+    Salida:la información del animal o un mensaje de error
+    """
     global animales,animalesWiki
     for i in range(len(animales)):
         print(i+1,":",animales[i])
@@ -63,10 +88,14 @@ def obtenerInformacion():
     if type(eleccion)!=int or eleccion<1 or eleccion>len(animales):
         print("Ingrese un valor correcto.")
         return ""
-    print("A: ",animalesWiki[eleccion-1][1])
-    print("B: ",animalesWiki[eleccion-1][2])
-    print("C: ",animalesWiki[eleccion-1][3])
-    print("D: ",animalesWiki[eleccion-1][4])
+    print()
+    print("A.Título: ",animalesWiki[eleccion-1][1])
+    print()
+    print("B.URL de Wikipedia : ",animalesWiki[eleccion-1][2])
+    print()
+    print("C.Resumen del contenido: ",animalesWiki[eleccion-1][3])
+    print()
+    print("D.Imagen: ",animalesWiki[eleccion-1][4])
     return ""
 #menu
 def menu():
@@ -97,7 +126,6 @@ def menu():
     time.sleep(2)
     while True:
         time.sleep(1)
-        os.system("cls")
         print("""        
                          __  
                         /_/  
@@ -119,31 +147,50 @@ def menu():
             cargaLista()
         elif opcion == 2:
             obtenerInformacion()
+            print()
+            input('Digite enter para continuar...')
         elif opcion == 3:
             animalesWiki=registrarAnotaciones(animalesWiki)
             print("")
         elif opcion == 4:
+            print()
+            print('----Apartar animales de mi zoológico----')
+            print()
             numApartarAnimales()
+            print()
+            input('Digite enter para continuar...')
         elif opcion == 5:
             salvaguardandoZoologico(animalesWiki) 
         elif opcion == 6:
+            print()
+            print('----Exportando la base de datos----')
+            print()
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
             grabarXml(nombreBase,animalesWiki)
+            input('Digite enter para continuar...')
         elif opcion == 7:
             siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
             if siNo.upper() == "SI":
                 grabar(animalesWiki)
                 print("Se ha guardado el archivo.")
+            print()
+            print('Saliendo del sistema de información...')
+            print()
             frases=["Una vez que una especie se extingue ninguna ley puede hacerla regresar: se ha marchado para siempre",
                     'Las mentes más profundas de todos los tiempos han sentido compasión por los animales',
                     'Si un hombre aspira a una vida correcta, su primer acto de abstinencia es el de lastimar animales',
                     'Podemos juzgar el corazón de una persona por la forma en que trata a los animales',
-                    'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble' ]
+                    'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble']
+            time.sleep(2)
             print(random.choice(frases))
+            grabar(archivo,animales)
+            time.sleep(2)
             break
         else:
+            print()
             print('Opción no válida')
-        
+            print()
+            input('Digite enter para continuar...')
 
 #menu
 #!EJECUCIÓN
