@@ -155,14 +155,17 @@ def menu():
         print("7. Salir del sistema de información\n")
         opcion = input("Digite una opción: ")
         if opcion == '1':
+            print()
+            print('---- Agregar animales----')
             cargaLista()
+            input('Digite enter para continuar...')
         elif opcion == '2':
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
         elif opcion == '3':
             animalesWiki=registrarAnotaciones(animalesWiki)
-            print("")
+            input('Digite enter para continuar...')
         elif opcion == '4':
             print()
             print('----Apartar animales de mi zoológico----')
