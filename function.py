@@ -7,6 +7,7 @@
 from IntegrationWikipedia import getInfo
 import random
 import time
+import re
 #Definición de funciones
 def cargarInfoWiki(animales):
     """
@@ -48,15 +49,17 @@ def registrarAnotaciones(matriz):
         for i in range(len(matriz)):
             print(i+1,":",matriz[i][0])
         eleccion=input("Ingrese el número que represente al animal que desea agregar la anotación: ")
-        try: eleccion=eval(eleccion)
-        except: 
+        while not re.match("^\d{1,}$",eleccion):
             print("Ingrese un valor correcto.") 
-            time.sleep(2)
-            continue
-        if type(eleccion)!=int or eleccion<1 or eleccion>len(matriz):
+            eleccion=input("Ingrese el número que represente al animal que desea agregar la anotación: ")
+        eleccion=eval(eleccion)   
+        while eleccion<1 or eleccion>len(matriz):
             print("Ingrese un valor correcto.")
-            time.sleep(2)
-            continue
+            eleccion=input("Ingrese el número que represente al animal que desea agregar la anotación: ")
+            while not re.match("^\d{1,}$",eleccion):
+                print("Ingrese un valor correcto.") 
+                eleccion=input("Ingrese el número que represente al animal que desea agregar la anotación: ")
+            eleccion=eval(eleccion)   
         anotacion=input("Dijite la anotación que desea agregar: ")
         matriz[eleccion-1][5]+=[anotacion]
         if not siNo():
