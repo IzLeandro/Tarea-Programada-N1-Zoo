@@ -144,18 +144,18 @@ def menu():
         print("5. Salvaguardando estable mi zoológico")
         print("6. Exportando la base de datos")
         print("7. Salir del sistema de información\n")
-        opcion = int(input("Digite una opción: "))
-        if opcion == 1:
+        opcion = input("Digite una opción: ")
+        if opcion == '1':
             cargaLista()
-        elif opcion == 2:
+        elif opcion == '2':
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
             os.system("cls")
-        elif opcion == 3:
+        elif opcion == '3':
             animalesWiki=registrarAnotaciones(animalesWiki)
             print("")
-        elif opcion == 4:
+        elif opcion == '4':
             print()
             print('----Apartar animales de mi zoológico----')
             print()
@@ -163,9 +163,9 @@ def menu():
             print()
             input('Digite enter para continuar...')
             os.system("cls")
-        elif opcion == 5:
+        elif opcion == '5':
             salvaguardandoZoologico(animalesWiki) 
-        elif opcion == 6:
+        elif opcion == '6':
             print()
             print('----Exportando la base de datos----')
             print()
@@ -173,7 +173,7 @@ def menu():
             grabarXml(nombreBase,animalesWiki)
             input('Digite enter para continuar...')
             os.system("cls")
-        elif opcion == 7:
+        elif opcion == '7':
             siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
             if siNo.upper() == "SI":
                 grabar(animalesWiki)
