@@ -58,25 +58,30 @@ def leerTxtPrimeraVez(veces):
     """
     listaFinal=[]
     nombreArchivo= input("Inserte el nombre del archivo con los animales: ")
-    try:
-        referencia = open((nombreArchivo),"r",encoding="utf8")
-        leerLista = referencia.readlines()
-        while veces>len(leerLista):
-            print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
-            veces=input('Digite la cantidad de animales que desea obtener del archivo: ')
-            while not re.match("^\d{1,}$",veces):
-                print("Debe digitar un número entero.")
-                veces = input("Digite la cantidad de animales que desea obtener del archivo: ")
-            veces=int(veces)
-        while veces!=0:
-            animal=leerLista[random.randrange(len(leerLista))]
-            if animal not in listaFinal:
-                listaFinal+= [animal] 
-                veces-=1
-                referencia.close()
-        return borrarResiduosDelArchivo(listaFinal)
-    except:
-        return None
+    bandera=0
+    while bandera==0:
+        try:
+            referencia = open((nombreArchivo),"r",encoding="utf8")
+            leerLista = referencia.readlines()
+            bandera=1
+            while veces>len(leerLista):
+                print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
+                veces=input('Digite la cantidad de animales que desea obtener del archivo: ')
+                while not re.match("^\d{1,}$",veces):
+                    print("Debe digitar un número entero.")
+                    veces = input("Digite la cantidad de animales que desea obtener del archivo: ")
+                veces=int(veces)
+            while veces!=0:
+                animal=leerLista[random.randrange(len(leerLista))]
+                if animal not in listaFinal:
+                    listaFinal+= [animal] 
+                    veces-=1
+                    referencia.close()
+            return borrarResiduosDelArchivo(listaFinal)
+        except:
+            print('Archivo no encontrado')
+            nombreArchivo= input("Inserte el nombre del archivo con los animales: ")
+            bandera=0
 
 def borrarResiduosDelArchivo(listaAnimales):
     """
