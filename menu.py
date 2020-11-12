@@ -35,6 +35,7 @@ def cargaLista():
                 cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
             cantAnimales=int(cantAnimales)
         animales=leerTxtPrimeraVez(cantAnimales)
+        animalesWiki = cargarInfoWiki(animales)
         flagPrimeraVez=False
         return ""
     siNo=input(" Desea cargar datos de un archivo previo?. SI/NO: ")
@@ -90,10 +91,18 @@ def obtenerInformacion():
     global animales,animalesWiki
     for i in range(len(animales)):
         print(i+1,":",animales[i])
-    eleccion=eval(input("Ingrese el número de animal del que desea obtener información: "))
-    if type(eleccion)!=int or eleccion<1 or eleccion>len(animales):
+    eleccion=input("Ingrese el número del animal del que desea obtener información: ")
+    while not re.match("^\d{1,}$",eleccion):
         print("Ingrese un valor correcto.")
-        return ""
+        eleccion=input("Ingrese el número del animal del que desea obtener información: ")
+    eleccion=int(eleccion)
+    while eleccion<1 or eleccion>len(animales):
+        print("Ingrese un valor correcto.")
+        eleccion=input("Ingrese el número del animal del que desea obtener información: ")
+        while not re.match("^\d{1,}$",eleccion):
+            print("Ingrese un valor correcto.")
+            eleccion=input("Ingrese el número del animal del que desea obtener información: ")
+        eleccion=int(eleccion)
     print()
     print("A.Título: ",animalesWiki[eleccion-1][1])
     print()
@@ -154,12 +163,18 @@ def menu():
         print("6. Exportando la base de datos")
         print("7. Salir del sistema de información\n")
         opcion = input("Digite una opción: ")
+        print()
         if opcion == '1':
             print()
             print('---- Agregar animales----')
+            print()
             cargaLista()
+            print()
             input('Digite enter para continuar...')
         elif opcion == '2':
+            print()
+            print('---- Obtener información de un animal----')
+            print()
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
