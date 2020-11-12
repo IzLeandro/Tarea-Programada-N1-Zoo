@@ -6,6 +6,7 @@
 import pickle
 import random
 import os
+import re
 #Definición de funciones 
 #* Done: PARA COMPROBAR SI EL ARCHIVO EXISTE, REVISAR SI LISTA == []
 def grabar(lista):
@@ -60,9 +61,13 @@ def leerTxtPrimeraVez(veces):
     try:
         referencia = open((nombreArchivo),"r",encoding="utf8")
         leerLista = referencia.readlines()
-        if veces>len(leerLista):
+        while veces>len(leerLista):
             print("El archivo cargado tiene menos animales de los que usted solicita, el maximo para ese archivo es de",len(leerLista))
-            return
+            veces=input('Digite la cantidad de animales que desea obtener del archivo: ')
+            while not re.match("^\d{1,}$",veces):
+                print("Debe digitar un número entero.")
+                veces = input("Digite la cantidad de animales que desea obtener del archivo: ")
+            veces=int(veces)
         while veces!=0:
             animal=leerLista[random.randrange(len(leerLista))]
             if animal not in listaFinal:

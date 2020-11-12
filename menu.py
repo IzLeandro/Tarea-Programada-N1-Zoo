@@ -22,10 +22,18 @@ def cargaLista():
     """
     global animales,archivo,flagPrimeraVez,animalesWiki
     if flagPrimeraVez:
-        cantAnimales = eval(input("Digite la cantidad de animales que desea obtener del archivo: "))
-        if type(cantAnimales) != int:
-            print("Debe digitar un nùmero entero.")
-            return cargaLista()
+        cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
+        while not re.match("^\d{1,}$",cantAnimales):
+            print("Debe digitar un número entero.")
+            cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
+        cantAnimales=int(cantAnimales)
+        while cantAnimales==0:
+            print("El número de animales no puede ser cero.")
+            cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
+            while not re.match("^\d{1,}$",cantAnimales):
+                print("Debe digitar un número entero.")
+                cantAnimales = input("Digite la cantidad de animales que desea obtener del archivo: ")
+            cantAnimales=int(cantAnimales)
         animales=leerTxtPrimeraVez(cantAnimales)
         flagPrimeraVez=False
         return ""
