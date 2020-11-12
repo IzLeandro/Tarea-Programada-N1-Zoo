@@ -107,7 +107,6 @@ def grabarXml(nomArchGrabar,lista):
             f.writelines("\t<Animal>"+i[0]+"</Animal>\n")
             f.writelines("\t\t<Titulo>"+i[1]+"</Titulo>\n")
             f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
-            print("<Descript>"+i[3]+"</Descript>")
             f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
             f.writelines("\t\t<img>"+i[4]+"</img>\n")
             f.writelines("\t\t<Anotaciones>"+(str(i[5]))+"</Anotaciones>\n")
