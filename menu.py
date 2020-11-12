@@ -79,7 +79,9 @@ def numApartarAnimales():
     else:
         print("Se han apartado",len(animales)-numAnimales,"animales del zoológico.")
     animales=apartarAnimales(numAnimales,animales)
+    input('Digite enter para continuar...')
     animalesWiki=cargarInfoWiki(animales)
+    animales=sacaListaAnimales(animalesWiki)
     return ""
 
 def obtenerInformacion():
@@ -191,7 +193,6 @@ def menu():
             print()
             numApartarAnimales()
             print()
-            input('Digite enter para continuar...')
         elif opcion == '5':
             print()
             print('----Salvaguardando estable mi zoológico----')
@@ -216,9 +217,9 @@ def menu():
                 while siNo.upper() != "SI" or siNo.upper()!='NO' :
                     print('Opción inválida')
                     siNo=input("¿Desea guardar su información en un archivo binario?. SI/NO: ")
-             if siNo.upper() == "SI":
-                grabar(animalesWiki)
-                print("Se ha guardado el archivo.")
+                    if siNo.upper() == "SI":
+                        grabar(animalesWiki)
+                        print("Se ha guardado el archivo.")
             print()
             print('Saliendo del sistema de información...')
             print()
@@ -238,6 +239,5 @@ def menu():
 #menu
 #!EJECUCIÓN
 cargaLista()
-animalesWiki = cargarInfoWiki(animales)
 menu()
 

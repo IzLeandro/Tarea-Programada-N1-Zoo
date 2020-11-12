@@ -23,6 +23,7 @@ def cleanText(texto):
     for i in range(len(texto)):
         save=save+texto[i]
     save=save.replace("\u200b","")
+    #save=save.replace("\u03c7","")
     return save
 
 def cleanTextAux(texto):
@@ -34,5 +35,6 @@ def cleanTextAux(texto):
     texto=str(texto)
     texto = re.sub("[[][\d][]]", " ", texto)
     texto = re.sub("[[][\d][\d][]]", " ", texto)
+    texto = re.sub("[\W][u]"," ",texto)
     os.system("cls")
     return texto
