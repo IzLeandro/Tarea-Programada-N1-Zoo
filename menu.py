@@ -166,20 +166,24 @@ def menu():
         print()
         if opcion == '1':
             print()
-            print('---- Agregar animales----')
+            print('----Agregar animales----')
             print()
             cargaLista()
             print()
             input('Digite enter para continuar...')
         elif opcion == '2':
             print()
-            print('---- Obtener información de un animal----')
+            print('----Obtener información de un animal----')
             print()
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
         elif opcion == '3':
+            print()
+            print('----Registrar anotaciones----')
+            print()
             animalesWiki=registrarAnotaciones(animalesWiki)
+            print()
             input('Digite enter para continuar...')
         elif opcion == '4':
             print()
@@ -189,19 +193,26 @@ def menu():
             print()
             input('Digite enter para continuar...')
         elif opcion == '5':
+            print()
+            print('----Salvaguardando estable mi zoológico----')
+            print()
             salvaguardandoZoologico(animalesWiki) 
+            print()
+            input('Digite enter para continuar...')
         elif opcion == '6':
             print()
             print('----Exportando la base de datos----')
             print()
-            nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
+            nombreBase=input('Digite el nombre que desea ponerle al archivo: ')
             grabarXml(nombreBase,animalesWiki)
             input('Digite enter para continuar...')
         elif opcion == '7':
-            siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
-            if siNo.upper() == "SI":
-                grabar(animalesWiki)
-                print("Se ha guardado el archivo.")
+            siNo=input("¿Desea guardar su información en un archivo binario?. SI/NO: ")
+            while siNo.upper() != "SI":
+                print('Opción no válida')
+                siNo=input("¿Desea guardar su información en un archivo binario?. SI/NO: ")
+            grabar(animalesWiki)
+            print("Se ha guardado el archivo.")
             print()
             print('Saliendo del sistema de información...')
             print()

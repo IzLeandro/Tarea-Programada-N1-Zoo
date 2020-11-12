@@ -60,7 +60,7 @@ def registrarAnotaciones(matriz):
                 print("Ingrese un valor correcto.") 
                 eleccion=input("Ingrese el número que represente al animal que desea agregar la anotación: ")
             eleccion=eval(eleccion)   
-        anotacion=input("Dijite la anotación que desea agregar: ")
+        anotacion=input("Digite la anotación que desea agregar: ")
         matriz[eleccion-1][5]+=[anotacion]
         if not siNo():
             break
@@ -95,8 +95,8 @@ def salvaguardandoZoologico(matriz):
         print(i[3],"\n")
         if i[4]==[]:
             i[4]="No existen anotaciones y/o observaciones."
-        print("Observaciones y anotaciònes: ",  i[4],"\n")
-        print("Puedes encontrar màs informaciòn aquì:",i[2],"\n\n")
+        print("Observaciones y anotaciónes: ",  i[4],"\n")
+        print("Puedes encontrar más información aquí:",i[2],"\n\n")
     return ""
 
 def sacaListaAnimales(listaWiki):
