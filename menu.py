@@ -2,20 +2,12 @@
 #Fecha de Creación: 31/10/2020 2:32pm 
 #Fecha de última Modificación: XX/XX/XX X:XXpm
 #Versión: 3.9.0
-
 #Importaciones 
 from files import cargarListaOriginal, leerTxtPrimeraVez, grabar, grabarXml
 from IntegrationWikipedia import getInfo
 from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salvaguardandoZoologico,sacaListaAnimales
-import re
-import random
-import time
-import os
-#TODO:
-#!AL cerrar archivo o al abrir el archivo; guardar
-#!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
+import re, random, time, os
 #? Ejemplo al abrir: C:\Users\ljafe\Desktop\prueba
-
 #Variables Globales
 flagPrimeraVez=True
 animales = []
@@ -36,7 +28,7 @@ def cargaLista():
     if siNo.upper() == "SI":
         archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
         animalesWiki = cargarListaOriginal(archivo)
-        animales=sacaListaAnimales(animalesWiki)
+        animales = sacaListaAnimales(animalesWiki)
         print("Se ha cargado el archivo.")
         return ""
     if siNo.upper() == "NO":
@@ -125,7 +117,6 @@ def menu():
                                        '~---~'
     """)
     time.sleep(2)
-    os.system("cls")
     while True:
         time.sleep(1)
         print("""        
@@ -151,7 +142,6 @@ def menu():
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
-            os.system("cls")
         elif opcion == '3':
             animalesWiki=registrarAnotaciones(animalesWiki)
             print("")
@@ -162,7 +152,6 @@ def menu():
             numApartarAnimales()
             print()
             input('Digite enter para continuar...')
-            os.system("cls")
         elif opcion == '5':
             salvaguardandoZoologico(animalesWiki) 
         elif opcion == '6':
@@ -172,7 +161,6 @@ def menu():
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
             grabarXml(nombreBase,animalesWiki)
             input('Digite enter para continuar...')
-            os.system("cls")
         elif opcion == '7':
             siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
             if siNo.upper() == "SI":
@@ -188,15 +176,12 @@ def menu():
                     'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble']
             time.sleep(2)
             print(random.choice(frases))
-            grabar(animales)
-            time.sleep(2)
             break
         else:
             print()
             print('Opción no válida')
             print()
             input('Digite enter para continuar...')
-
 #menu
 #!EJECUCIÓN
 cargaLista()

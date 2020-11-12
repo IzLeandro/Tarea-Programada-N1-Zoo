@@ -99,6 +99,5 @@ def salvaguardandoZoologico(matriz):
 def sacaListaAnimales(listaWiki):
     nuevaLista=[]
     for i in listaWiki:
-        print(i)
-        nuevaLista=i[0]
+        nuevaLista+=[i[0]]
     return nuevaLista
