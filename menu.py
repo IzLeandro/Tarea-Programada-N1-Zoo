@@ -10,6 +10,7 @@ from function import cargarInfoWiki, apartarAnimales, registrarAnotaciones,salva
 import re
 import random
 import time
+import os
 #TODO:
 #!AL cerrar archivo o al abrir el archivo; guardar
 #!CADA VEZ QUE SE AGREGUE UN ANIMAL O SE BORRE UN ANIMAL SOBREESCRIBIR LA LISTA CON INFO DE WIKI
@@ -124,6 +125,7 @@ def menu():
                                        '~---~'
     """)
     time.sleep(2)
+    os.system("cls")
     while True:
         time.sleep(1)
         print("""        
@@ -149,6 +151,7 @@ def menu():
             obtenerInformacion()
             print()
             input('Digite enter para continuar...')
+            os.system("cls")
         elif opcion == 3:
             animalesWiki=registrarAnotaciones(animalesWiki)
             print("")
@@ -159,6 +162,7 @@ def menu():
             numApartarAnimales()
             print()
             input('Digite enter para continuar...')
+            os.system("cls")
         elif opcion == 5:
             salvaguardandoZoologico(animalesWiki) 
         elif opcion == 6:
@@ -168,6 +172,7 @@ def menu():
             nombreBase=input('Digite el nombre que sea ponerle al archivo: ')
             grabarXml(nombreBase,animalesWiki)
             input('Digite enter para continuar...')
+            os.system("cls")
         elif opcion == 7:
             siNo=input(" Desea guardar su informaciòn en un archivo binario?. SI/NO: ")
             if siNo.upper() == "SI":
@@ -183,7 +188,7 @@ def menu():
                     'Cuando un hombre se apiade de todas las criaturas vivientes, sólo entonces será noble']
             time.sleep(2)
             print(random.choice(frases))
-            grabar(archivo,animales)
+            grabar(animales)
             time.sleep(2)
             break
         else:
