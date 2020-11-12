@@ -97,6 +97,11 @@ def salvaguardandoZoologico(matriz):
     return ""
 
 def sacaListaAnimales(listaWiki):
+    """
+    Función:Genera la lista de solo nombres animales
+    Entrada:Matriz
+    Salida:Lista
+    """
     nuevaLista=[]
     for i in listaWiki:
         nuevaLista+=[i[0]]

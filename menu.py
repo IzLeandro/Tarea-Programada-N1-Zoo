@@ -15,6 +15,11 @@ animalesWiki = []
 nombreZoo=input("¡Bienvenido!\nDijite un nombre para su zoológico: ")
 #Funciones
 def cargaLista():
+    """
+    Función:Carga lista primera vez, y hace la funciòn de cargar el archivo binario las demàs
+    Entrada:el número del animal 
+    Salida:la información del animal o un mensaje de error
+    """
     global animales,archivo,flagPrimeraVez,animalesWiki
     if flagPrimeraVez:
         cantAnimales = eval(input("Digite la cantidad de animales que desea obtener del archivo: "))
@@ -92,6 +97,11 @@ def obtenerInformacion():
     return ""
 #menu
 def menu():
+    """
+    Función:Inicializa el menu
+    Entrada:N/A
+    Salida:N/A
+    """
     global animales, animalesWiki
     print("""
                       ______           _   __        _            

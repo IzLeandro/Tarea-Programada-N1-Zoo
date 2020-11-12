@@ -74,6 +74,11 @@ def leerTxtPrimeraVez(veces):
         return None
 
 def borrarResiduosDelArchivo(listaAnimales):
+    """
+    Función: elimina los residuos que quedan al cargar los animales desde el archivo.
+    Entrada: lista de animales
+    Salida: lista de animales
+    """
     listaFinal=[]
     for i in listaAnimales:
         listaFinal+=[i[:-1]]
