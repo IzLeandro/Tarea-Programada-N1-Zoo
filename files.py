@@ -96,7 +96,7 @@ def grabarXml(nomArchGrabar,lista):
             f.writelines("\t\t<Url>"+i[2]+"</Url>\n")
             f.writelines("\t\t<Descript>"+i[3]+"</Descript>\n")
             f.writelines("\t\t<img>"+i[4]+"</img>\n")
-            f.writelines("\t\t<Anotaciones>"+str(i[5])+"</Anotaciones>\n")
+            f.writelines("\t\t<Anotaciones>"+(str(i[5]))+"</Anotaciones>\n")
         f.writelines("</Zoologico>\n")
         f.close()
         print("¡Archivo xml creado correctamente!")
