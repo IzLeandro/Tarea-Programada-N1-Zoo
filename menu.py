@@ -41,9 +41,8 @@ def cargaLista():
     siNo=input(" Desea cargar datos de un archivo previo?. SI/NO: ")
     if siNo.upper() == "SI":
         archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
-        animalesWiki = cargarListaOriginal(archivo)
+        animalesWiki = cargarListaOriginal(archivo,animalesWiki)
         animales = sacaListaAnimales(animalesWiki)
-        print("Se ha cargado el archivo.")
         return ""
     if siNo.upper() == "NO":
         animales=[]
