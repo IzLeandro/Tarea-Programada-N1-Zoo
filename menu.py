@@ -12,7 +12,7 @@ import re, random, time, os
 flagPrimeraVez=True
 animales = []
 animalesWiki = []
-nombreZoo=input("¡Bienvenido!\ndigite un nombre para su zoológico: ")
+nombreZoo=input("¡Bienvenido!\nDigite un nombre para su zoológico: ")
 #Funciones
 def cargaLista():
     """
@@ -40,7 +40,7 @@ def cargaLista():
         return ""
     siNo=input(" Desea cargar datos de un archivo previo?. SI/NO: ")
     if siNo.upper() == "SI":
-        archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
+        archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado o si está en la misma carpeta digite el nombre: ")
         animalesWiki = cargarListaOriginal(archivo,animalesWiki)
         animales = sacaListaAnimales(animalesWiki)
         return ""
