@@ -81,21 +81,21 @@ def siNo():
         print("Solo DEBE ingresar Si o No.")
         return siNo()
 
-def salvaguardandoZoologico(matriz):
+def salvaguardandoZoologico(matrizAux):
     """
     Función:Por cada animal en la lista simple agrega el animal a la matriz con todos sus datos, menos la imagen
     Entrada: matriz
     Salida:los datos de la matriz
     """
-    for i in matriz:
-        del i[4]
-    for i in matriz:
+
+    for i in matrizAux:
         print("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░")
         print(i[1],"Usualmente conocido como",i[0],"\n")
         print(i[3],"\n")
-        if i[4]==[]:
-            i[4]="No existen anotaciones y/o observaciones."
-        print("Observaciones y anotaciónes: ",  i[4],"\n")
+        if i[5]==[]:
+            print("No existen anotaciones y/o observaciones.\n")
+        else:
+            print("Observaciones y anotaciónes: ",  i[5],"\n")
         print("Puedes encontrar más información aquí:",i[2],"\n\n")
     return ""
 

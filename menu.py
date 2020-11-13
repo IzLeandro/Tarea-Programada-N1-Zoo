@@ -12,7 +12,7 @@ import re, random, time, os
 flagPrimeraVez=True
 animales = []
 animalesWiki = []
-nombreZoo=input("¡Bienvenido!\nDijite un nombre para su zoológico: ")
+nombreZoo=input("¡Bienvenido!\ndigite un nombre para su zoológico: ")
 #Funciones
 def cargaLista():
     """
@@ -41,9 +41,8 @@ def cargaLista():
     siNo=input(" Desea cargar datos de un archivo previo?. SI/NO: ")
     if siNo.upper() == "SI":
         archivo = input("Inserte el directorio donde se encuentra el archivo binario almacenado: ")
-        animalesWiki = cargarListaOriginal(archivo)
+        animalesWiki = cargarListaOriginal(archivo,animalesWiki)
         animales = sacaListaAnimales(animalesWiki)
-        print("Se ha cargado el archivo.")
         return ""
     if siNo.upper() == "NO":
         animales=[]
@@ -64,14 +63,14 @@ def numApartarAnimales():
     global animales,animalesWiki
     numAnimales = input("Digite la cantidad de animales que es posible atender: ")
     while not re.match("^\d{1,}$",numAnimales):
-        print("Dijite únicamente números.")
+        print("digite únicamente números.")
         numAnimales = input("Digite la cantidad de animales que es posible atender: ")   
     numAnimales=eval(numAnimales)
     while numAnimales>len(animales):
         print('Cantidad de animales mayor a la existente en el zoológico')
         numAnimales = input("Digite la cantidad de animales que es posible atender: ")
         while not re.match("^\d{1,}$",numAnimales):
-            print("Dijite únicamente números.")
+            print("digite únicamente números.")
             numAnimales = input("Digite la cantidad de animales que es posible atender: ")  
         numAnimales=eval(numAnimales) 
     if len(animales)-numAnimales==1:
@@ -236,7 +235,6 @@ def menu():
             print('Opción no válida')
             print()
             input('Digite enter para continuar...')
-#menu
 #!EJECUCIÓN
 cargaLista()
 menu()
